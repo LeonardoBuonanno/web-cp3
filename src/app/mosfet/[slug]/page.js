@@ -1,4 +1,5 @@
-import Image from "next/images";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Produto({ params }) {
   const { slug } = params;
@@ -11,17 +12,29 @@ export default function Produto({ params }) {
     sapato: "/images/caminho_para_imagem_sapato.jpg",
     bone: "/images/caminho_para_imagem_bone.jpg",
     oculos: "/images/caminho_para_imagem_oculos.jpg",
+    codfonte: "/images/codfonte.jpg",
   };
 
   const imagemSrc = produtosImagens[slug];
 
   return (
     <>
-      <h1>{imagemSrc}</h1>{" "}
+
+
+      <h1>Produto escolhido:</h1>
       {imagemSrc ? (
-        <Image src={imagemSrc} alt={slug} width={200} height={200} />
+        <>
+        <div className="link-produto">
+          <Image src={imagemSrc} alt={slug} width={400} height={400} margin={20}  />
+          <Link href="/">Menu</Link>
+
+        </div>
+        
+        
+        </>
       ) : (
         <p>Produto não encontrado</p>
+        
       )}
     </>
   );
